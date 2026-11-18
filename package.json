@@ -1,0 +1,32 @@
+{
+  "name": "@4onv/checkcanary",
+  "version": "0.1.0",
+  "description": "Replay deliberate defects to check whether a verification command catches them.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "checkcanary": "bin/checkcanary.js"
+  },
+  "exports": "./src/index.js",
+  "files": [
+    "bin",
+    "src",
+    "examples",
+    "docs"
+  ],
+  "scripts": {
+    "test": "node --test test/plan.test.js test/runner.test.js test/cli.test.js",
+    "check:package": "node scripts/check-package.js"
+  },
+  "repository": "github:4onv/checkcanary",
+  "keywords": [
+    "verification",
+    "testing",
+    "negative-testing",
+    "coding-agents",
+    "ci"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "name": "Synthetic checkout with shape-only assertions",
+  "command": [
+    "node",
+    "--test",
+    "checks.mjs"
+  ],
+  "files": {
+    "checks.mjs": "weak-checks.mjs",
+    "checkout.mjs": "good.mjs"
+  },
+  "canaries": [
+    {
+      "id": "approval-removed",
+      "replace": {
+        "checkout.mjs": "approval-removed.mjs"
+      },
+      "expect": {
+        "exitCode": 1,
+        "outputIncludes": [
+          "approval gates checkout",
+          "ERR_ASSERTION"
+        ]
+      }
+    },
+    {
+      "id": "wrong-total",
+      "replace": {
+        "checkout.mjs": "wrong-total.mjs"
+      },
+      "expect": {
+        "exitCode": 1,
+        "outputIncludes": [
+          "total includes every line",
+          "ERR_ASSERTION"
+        ]
+      }
+    }
+  ],
+  "timeoutMs": 10000
+}
